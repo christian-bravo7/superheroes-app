@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import Header from '@/components/Header/Header.component';
 import SuperHerosBoard from '@/components/SuperHerosBoard/SuperHerosBoard.component';
-import Collapsable from '@/components/Collapsable/Collapsable.component';
 
 import getAllSuperHeros, { SuperHero } from '@/api/getAllSuperHeros';
 
@@ -24,7 +23,6 @@ const App = (): JSX.Element => {
   return (
     <main className={classes.app}>
       <Header />
-      <Collapsable />
       <SuperHerosBoard heroes={heroes} />
       Hello world
     </main>

@@ -47,5 +47,21 @@
     height: 50px;
     margin-right: 10px;
     border: 0;
+    transform: rotate(180deg);
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+  }
+
+  &__ToggleButtonActive {
+    transform: rotate(0deg);
+  }
+
+  &__Content {
+    height: 0;
+  }
+
+  &__ContentActive {
+    height: 200px;
   }
 }

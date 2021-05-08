@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import heartSmallImage from '@/assets/images/small-heart.svg';
 import arrowImage from '@/assets/images/arrow-up.svg';
 
 import classes from '@/components/Collapsable/Collapsable.module.scss';
 
-const Collapsable = (): JSX.Element => {
+interface propTypes {
+  children: JSX.Element | string;
+}
+
+const Collapsable = ({ children }: propTypes): JSX.Element => {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleCollapsable = () => {
+    setIsActive(isActive => !isActive);
+  };
+
   return (
     <div data-testid="Collapsable" className={classes.Collapsable}>
       <div className={classes.Collapsable__Header}>
@@ -15,11 +25,22 @@ const Collapsable = (): JSX.Element => {
           </div>
           <span className={classes.Collapsable__HeaderTitle}>Liked</span>
         </div>
-        <button className={classes.Collapsable__ToggleButton}>
+        <button
+          onClick={toggleCollapsable}
+          className={`${classes.Collapsable__ToggleButton} ${
+            isActive ? classes.Collapsable__ToggleButtonActive : ''
+          }`}
+        >
           <img src={arrowImage} alt="" />
         </button>
       </div>
-      <div className={classes.Collapsable}>Content</div>
+      <div
+        className={`${classes.Collapsable__Content} ${
+          isActive ? classes.Collapsable__ContentActive : ''
+        }`}
+      >
+        {children}
+      </div>
     </div>
   );
 };
