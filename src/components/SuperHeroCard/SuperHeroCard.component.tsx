@@ -3,6 +3,7 @@ import React from 'react';
 import classes from '@/components/SuperHeroCard/SuperHeroCard.module.scss';
 
 import powerImage from '@/assets/images/fist.svg';
+import heartFilledImage from '@/assets/images/medium-filled-heart.svg';
 
 const SuperHeroCard = (): JSX.Element => {
   return (
@@ -14,10 +15,15 @@ const SuperHeroCard = (): JSX.Element => {
       }}
     >
       <div className={classes.SuperHeroCard__Content}>
-        <img
-          className={classes.SuperHeroCard__Picture}
-          src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg"
-        ></img>
+        <div className={classes.SuperHeroCard__PictureWrapper}>
+          <img
+            className={classes.SuperHeroCard__Picture}
+            src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg"
+          ></img>
+          <button className={classes.SuperHeroCard__LikeButton}>
+            <img src={heartFilledImage}></img>
+          </button>
+        </div>
         <div className={classes.SuperHeroCard__Information}>
           <span className={classes.SuperHeroCard__Name}>Batgirl</span>
           <span>Real Name: Barbara Gordon</span>

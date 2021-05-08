@@ -1,3 +1,5 @@
+@import '../../assets/scss/colors';
+
 .SuperHeroCard {
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,15 +14,33 @@
   }
 
   &__Picture {
-    width: 100px;
-    margin-right: 16px;
+    width: 120px;
     border-radius: 10px;
+  }
+
+  &__PictureWrapper {
+    position: relative;
+    margin-right: 16px;
   }
 
   &__Information {
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
+
+  &__LikeButton {
+    width: 60px;
+    height: 60px;
+    background-color: $light-purple;
+    border-radius: 50%;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: -8px;
   }
 
   &__Name {
