@@ -5,7 +5,7 @@ import SuperHerosBoard from '@/components/SuperHerosBoard/SuperHerosBoard.compon
 
 describe('SuperHerosBoard component', () => {
   it('should render in document', () => {
-    render(<SuperHerosBoard />);
+    render(<SuperHerosBoard heroes={[1, 2, 3, 4]} />);
 
     expect(screen.getByTestId('SuperHerosBoard')).toBeInTheDocument();
   });
