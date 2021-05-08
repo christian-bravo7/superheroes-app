@@ -67,7 +67,7 @@
     "*.{js,jsx,ts,tsx}": [
       "npm run lint:js:fix"
     ],
-    "*": [
+    "*.{js,jsx,ts,tsx,html,scss,json}": [
       "npm run pretty"
     ]
   }

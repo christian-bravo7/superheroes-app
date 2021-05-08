@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import App from '@/App';
 
-test('renders learn react link', () => {
+it('renders learn react link', () => {
   render(<App />);
 
   const helloWorldText = screen.getByText(/Hello world/i);
