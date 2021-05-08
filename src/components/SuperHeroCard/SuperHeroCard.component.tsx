@@ -8,7 +8,10 @@ import powerImage from '@/assets/images/fist.svg';
 import heartFilledImage from '@/assets/images/medium-filled-heart.svg';
 import heartImage from '@/assets/images/medium-heart.svg';
 
-type propTypes = SuperHero;
+interface propTypes extends SuperHero {
+  onAddToFavorites: () => void;
+  onRemoveFromFavorites: () => void;
+}
 
 const SuperHeroCard = ({
   name,
@@ -16,7 +19,13 @@ const SuperHeroCard = ({
   image,
   power,
   isFavorite,
+  onAddToFavorites,
+  onRemoveFromFavorites,
 }: propTypes): JSX.Element => {
+  const favoriteButtonHandler = isFavorite
+    ? onRemoveFromFavorites
+    : onAddToFavorites;
+
   return (
     <div
       data-testid="super-hero-card"
@@ -28,7 +37,11 @@ const SuperHeroCard = ({
       <div className={classes.SuperHeroCard__Content}>
         <div className={classes.SuperHeroCard__PictureWrapper}>
           <img className={classes.SuperHeroCard__Picture} src={image}></img>
-          <button className={classes.SuperHeroCard__LikeButton}>
+          <button
+            data-testid="favorite-button"
+            className={classes.SuperHeroCard__FavoriteButton}
+            onClick={favoriteButtonHandler}
+          >
             <img src={isFavorite ? heartFilledImage : heartImage}></img>
           </button>
         </div>
