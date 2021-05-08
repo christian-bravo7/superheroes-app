@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 
-import heartSmallImage from '@/assets/images/small-heart.svg';
 import arrowImage from '@/assets/images/arrow-up.svg';
 
 import classes from '@/components/Collapsable/Collapsable.module.scss';
 
 interface propTypes {
   children: JSX.Element | string;
+  headerIcon: string;
+  title: string;
 }
 
-const Collapsable = ({ children }: propTypes): JSX.Element => {
+const Collapsable = ({
+  children,
+  headerIcon,
+  title,
+}: propTypes): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleCollapsable = () => {
@@ -17,15 +22,26 @@ const Collapsable = ({ children }: propTypes): JSX.Element => {
   };
 
   return (
-    <div data-testid="Collapsable" className={classes.Collapsable}>
+    <div
+      data-testid="collapsable"
+      className={`${classes.Collapsable} ${
+        isActive ? classes.Collapsable__Active : ''
+      }`}
+    >
       <div className={classes.Collapsable__Header}>
         <div className={classes.Collapsable__HeaderLeftSection}>
           <div className={classes.Collapsable__HeaderIcon}>
-            <img src={heartSmallImage} alt="" />
+            <img data-testid="header-icon" src={headerIcon} alt="" />
           </div>
-          <span className={classes.Collapsable__HeaderTitle}>Liked</span>
+          <span
+            data-testid="header-title"
+            className={classes.Collapsable__HeaderTitle}
+          >
+            {title}
+          </span>
         </div>
         <button
+          data-testid="toggle-button"
           onClick={toggleCollapsable}
           className={`${classes.Collapsable__ToggleButton} ${
             isActive ? classes.Collapsable__ToggleButtonActive : ''
@@ -35,6 +51,7 @@ const Collapsable = ({ children }: propTypes): JSX.Element => {
         </button>
       </div>
       <div
+        data-testid="content"
         className={`${classes.Collapsable__Content} ${
           isActive ? classes.Collapsable__ContentActive : ''
         }`}

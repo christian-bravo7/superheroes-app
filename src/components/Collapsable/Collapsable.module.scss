@@ -3,14 +3,19 @@
 .Collapsable {
   display: flex;
   flex-direction: column;
+  border: 1px solid $light-purple;
+  background-color: $lighter-purple-2;
+  border-radius: 14px;
+  overflow: hidden;
+
+  &__Active {
+    background-color: transparent;
+  }
 
   &__Header {
     padding: 16px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid $lighter-purple;
-    border-radius: 14px;
-    background-color: $lighter-purple-2;
   }
 
   &__HeaderLeftSection {
@@ -59,9 +64,14 @@
 
   &__Content {
     height: 0;
+    opacity: 0;
+    transition-property: height, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
   }
 
   &__ContentActive {
+    opacity: 1;
     height: 200px;
   }
 }
