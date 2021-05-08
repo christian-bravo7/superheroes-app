@@ -14,8 +14,8 @@ const SuperHerosBoard = ({ heroes }: propTypes): JSX.Element => {
   return (
     <div data-testid="SuperHerosBoard" className={classes.SuperHerosBoard}>
       <div className={classes.SuperHerosBoard__Content}>
-        {heroes.map((_, index) => (
-          <SuperHeroCard key={index} />
+        {heroes.map((hero, index) => (
+          <SuperHeroCard {...hero} key={index} />
         ))}
       </div>
     </div>

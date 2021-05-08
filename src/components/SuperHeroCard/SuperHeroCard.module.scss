@@ -6,15 +6,18 @@
   border-radius: 14px;
   overflow: hidden;
   margin: 10px;
+  width: 420px;
+  height: 220px;
 
   &__Content {
     padding: 20px;
     display: flex;
-    backdrop-filter: brightness(0.8) blur(30px);
+    backdrop-filter: brightness(0.3) blur(25px);
   }
 
   &__Picture {
     width: 120px;
+    height: 100%;
     border-radius: 10px;
   }
 
@@ -27,6 +30,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    color: $light-gray;
   }
 
   &__LikeButton {
@@ -39,14 +43,19 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 0;
-    right: -8px;
+    bottom: -6px;
+    right: -6px;
   }
 
   &__Name {
     font-weight: bold;
     color: white;
     font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  &__RealName {
+    margin-bottom: 6px;
   }
 
   &__PowerImage {

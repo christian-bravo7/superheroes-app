@@ -3,7 +3,11 @@ import axios from 'axios';
 const getAllSuperHeros = async (): Promise<Array<SuperHero>> => {
   const { data } = await axios.get('');
 
+  console.log(data);
+
   const superHeroes = data.map((data: any) => formatSuperHeroData(data));
+
+  console.log(superHeroes);
 
   return superHeroes;
 };
@@ -19,7 +23,7 @@ const formatSuperHeroData = (data: any): SuperHero => {
   const image = data.images.md;
   const name = data.name;
 
-  const realName = data.biography.fullName;
+  const realName = data.biography.fullName || '-';
   const power = 10;
 
   return {
