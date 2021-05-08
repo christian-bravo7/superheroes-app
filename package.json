@@ -65,7 +65,9 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "npm run lint:js:fix",
+      "npm run lint:js:fix"
+    ],
+    "*": [
       "npm run pretty"
     ]
   }
