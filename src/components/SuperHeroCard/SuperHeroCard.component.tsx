@@ -6,6 +6,7 @@ import classes from '@/components/SuperHeroCard/SuperHeroCard.module.scss';
 
 import powerImage from '@/assets/images/fist.svg';
 import heartFilledImage from '@/assets/images/medium-filled-heart.svg';
+import heartImage from '@/assets/images/medium-heart.svg';
 
 type propTypes = SuperHero;
 
@@ -14,6 +15,7 @@ const SuperHeroCard = ({
   realName,
   image,
   power,
+  isFavorite,
 }: propTypes): JSX.Element => {
   return (
     <div
@@ -27,7 +29,7 @@ const SuperHeroCard = ({
         <div className={classes.SuperHeroCard__PictureWrapper}>
           <img className={classes.SuperHeroCard__Picture} src={image}></img>
           <button className={classes.SuperHeroCard__LikeButton}>
-            <img src={heartFilledImage}></img>
+            <img src={isFavorite ? heartFilledImage : heartImage}></img>
           </button>
         </div>
         <div className={classes.SuperHeroCard__Information}>

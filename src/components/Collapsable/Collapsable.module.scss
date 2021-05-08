@@ -6,7 +6,6 @@
   border: 1px solid $light-purple;
   background-color: $lighter-purple-2;
   border-radius: 14px;
-  overflow: hidden;
 
   &__Active {
     background-color: transparent;
@@ -72,6 +71,6 @@
 
   &__ContentActive {
     opacity: 1;
-    height: 200px;
+    height: auto;
   }
 }

@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import Header from '@/components/Header/Header.component';
 import SuperHeroesBoard from '@/components/SuperHeroesBoard/SuperHeroesBoard.component';
-import Collapsable from '@/components/Collapsable/Collapsable.component';
 
 import getAllSuperHeroes, { SuperHero } from '@/api/getAllSuperHeroes';
 
 import classes from '@/App.module.scss';
-
-import heartSmallImage from '@/assets/images/small-heart.svg';
+import FavoriteHeroes from '@/components/FavoriteHeroes/FavoriteHeroes.component';
 
 const App = (): JSX.Element => {
   const [heroes, setHeroes] = useState<Array<SuperHero>>([]);
@@ -16,6 +14,8 @@ const App = (): JSX.Element => {
   useEffect(() => {
     const anyNameFunction = async () => {
       const heroes = await getAllSuperHeroes();
+
+      console.log(heroes);
 
       setHeroes(heroes);
     };
@@ -26,9 +26,8 @@ const App = (): JSX.Element => {
   return (
     <main className={classes.app}>
       <Header />
-      <Collapsable headerIcon={heartSmallImage} title="Liked">
-        Content
-      </Collapsable>
+      <FavoriteHeroes />
+      <SuperHeroesBoard heroes={heroes} />
       Hello world
     </main>
   );

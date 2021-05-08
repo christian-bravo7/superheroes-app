@@ -3,22 +3,25 @@
 .SuperHeroCard {
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
   border-radius: 14px;
   overflow: hidden;
   margin: 10px;
-  width: 420px;
-  height: 220px;
+  width: 320px;
+  height: 190px;
 
   &__Content {
+    height: 100%;
     padding: 20px;
     display: flex;
-    backdrop-filter: brightness(0.3) blur(25px);
+    backdrop-filter: brightness(0.35) blur(20px);
   }
 
   &__Picture {
     width: 120px;
     height: 100%;
     border-radius: 10px;
+    object-fit: cover;
   }
 
   &__PictureWrapper {

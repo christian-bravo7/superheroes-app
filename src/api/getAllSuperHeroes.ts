@@ -17,6 +17,7 @@ export interface SuperHero {
   name: string;
   realName: string;
   power: number;
+  isFavorite: boolean;
 }
 
 const formatSuperHeroData = (data: any): SuperHero => {
@@ -31,6 +32,7 @@ const formatSuperHeroData = (data: any): SuperHero => {
     name,
     realName,
     power,
+    isFavorite: false,
   };
 };
 
