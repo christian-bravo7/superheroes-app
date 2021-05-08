@@ -7,6 +7,6 @@ describe('SuperHeroesBoard component', () => {
   it('should render in document', () => {
     render(<SuperHeroesBoard heroes={[1, 2, 3, 4]} />);
 
-    expect(screen.getByTestId('SuperHeroesBoard')).toBeInTheDocument();
+    expect(screen.getByTestId('super-hero-board')).toBeInTheDocument();
   });
 });

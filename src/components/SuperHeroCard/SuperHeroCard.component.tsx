@@ -19,7 +19,7 @@ const SuperHeroCard = ({
 }: propTypes): JSX.Element => {
   return (
     <div
-      data-testid="SuperHeroCard"
+      data-testid="super-hero-card"
       className={classes.SuperHeroCard}
       style={{
         backgroundImage: `url(${image})`,

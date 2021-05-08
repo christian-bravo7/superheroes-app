@@ -8,6 +8,6 @@ describe('FavoriteHeroes component', () => {
     render(<FavoriteHeroes />);
 
     expect(screen.getByTestId('collapsable')).toBeInTheDocument();
-    expect(screen.getByTestId('SuperHeroesBoard')).toBeInTheDocument();
+    expect(screen.getByTestId('super-hero-board')).toBeInTheDocument();
   });
 });

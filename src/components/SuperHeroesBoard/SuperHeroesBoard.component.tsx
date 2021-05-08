@@ -12,7 +12,7 @@ interface propTypes {
 
 const SuperHeroesBoard = ({ heroes }: propTypes): JSX.Element => {
   return (
-    <div data-testid="SuperHeroesBoard" className={classes.SuperHeroesBoard}>
+    <div data-testid="super-hero-board" className={classes.SuperHeroesBoard}>
       <div className={classes.SuperHeroesBoard__Content}>
         {heroes.map((hero, index) => (
           <SuperHeroCard {...hero} key={index} />
