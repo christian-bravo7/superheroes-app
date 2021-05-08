@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getAllSuperHeros = async (): Promise<Array<SuperHero>> => {
+const getAllSuperHeroes = async (): Promise<Array<SuperHero>> => {
   const { data } = await axios.get('');
 
   console.log(data);
@@ -34,4 +34,4 @@ const formatSuperHeroData = (data: any): SuperHero => {
   };
 };
 
-export default getAllSuperHeros;
+export default getAllSuperHeroes;

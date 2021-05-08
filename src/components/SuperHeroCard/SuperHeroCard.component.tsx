@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SuperHero } from '@/api/getAllSuperHeros';
+import { SuperHero } from '@/api/getAllSuperHeroes';
 
 import classes from '@/components/SuperHeroCard/SuperHeroCard.module.scss';
 

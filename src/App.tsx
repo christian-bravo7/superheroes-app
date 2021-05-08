@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 import Header from '@/components/Header/Header.component';
-import SuperHerosBoard from '@/components/SuperHerosBoard/SuperHerosBoard.component';
+import SuperHeroesBoard from '@/components/SuperHeroesBoard/SuperHeroesBoard.component';
 import Collapsable from '@/components/Collapsable/Collapsable.component';
 
-import getAllSuperHeros, { SuperHero } from '@/api/getAllSuperHeros';
+import getAllSuperHeroes, { SuperHero } from '@/api/getAllSuperHeroes';
 
 import classes from '@/App.module.scss';
 
@@ -15,7 +15,7 @@ const App = (): JSX.Element => {
 
   useEffect(() => {
     const anyNameFunction = async () => {
-      const heroes = await getAllSuperHeros();
+      const heroes = await getAllSuperHeroes();
 
       setHeroes(heroes);
     };
