@@ -1,0 +1,16 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore project files
+/node_modules/
+
+package-lock.json
+
+.eslintignore
+
+.prettierignore
+
+.husky
+
+*.lock
