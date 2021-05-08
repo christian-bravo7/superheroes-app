@@ -1,0 +1,45 @@
+.SuperHeroCard {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 14px;
+  overflow: hidden;
+  margin: 10px;
+
+  &__Content {
+    padding: 20px;
+    display: flex;
+    backdrop-filter: brightness(0.8) blur(30px);
+  }
+
+  &__Picture {
+    width: 100px;
+    margin-right: 16px;
+    border-radius: 10px;
+  }
+
+  &__Information {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  &__Name {
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+  }
+
+  &__PowerImage {
+    margin-right: 6px;
+  }
+
+  &__PowerInformation {
+    display: flex;
+    align-items: center;
+  }
+
+  &__PowerPoints {
+    color: white;
+    font-weight: bold;
+  }
+}
