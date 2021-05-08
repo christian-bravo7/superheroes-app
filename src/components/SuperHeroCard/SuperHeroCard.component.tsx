@@ -9,11 +9,13 @@ import heartFilledImage from '@/assets/images/medium-filled-heart.svg';
 import heartImage from '@/assets/images/medium-heart.svg';
 
 interface propTypes extends SuperHero {
-  onAddToFavorites: () => void;
-  onRemoveFromFavorites: () => void;
+  index: number;
+  onAddToFavorites: (index: number) => void;
+  onRemoveFromFavorites: (index: number) => void;
 }
 
 const SuperHeroCard = ({
+  index,
   name,
   realName,
   image,
@@ -22,9 +24,13 @@ const SuperHeroCard = ({
   onAddToFavorites,
   onRemoveFromFavorites,
 }: propTypes): JSX.Element => {
-  const favoriteButtonHandler = isFavorite
-    ? onRemoveFromFavorites
-    : onAddToFavorites;
+  const favoriteButtonHandler = () => {
+    if (isFavorite) {
+      onRemoveFromFavorites(index);
+    } else {
+      onAddToFavorites(index);
+    }
+  };
 
   return (
     <div

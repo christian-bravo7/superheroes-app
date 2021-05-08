@@ -7,6 +7,7 @@ import userEvent from '@testing-library/user-event';
 describe('SuperHeroCard component', () => {
   it('should render in document', () => {
     const superHero = {
+      index: 0,
       image: 'agent-zero.png',
       isFavorite: false,
       name: 'Agent Zero',
@@ -30,6 +31,7 @@ describe('SuperHeroCard component', () => {
 
   it('should call addToFavorites handler when super hero is not favorite', async () => {
     const superHero = {
+      index: 0,
       image: 'agent-zero.png',
       isFavorite: false,
       name: 'Agent Zero',
@@ -56,6 +58,7 @@ describe('SuperHeroCard component', () => {
 
   it('should call removeFromFavorites handler when super hero is favorite', async () => {
     const superHero = {
+      index: 0,
       image: 'agent-zero.png',
       isFavorite: true,
       name: 'Agent Zero',
