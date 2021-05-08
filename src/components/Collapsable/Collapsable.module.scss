@@ -1,0 +1,51 @@
+@import '../../assets/scss/colors';
+
+.Collapsable {
+  display: flex;
+  flex-direction: column;
+
+  &__Header {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid $lighter-purple;
+    border-radius: 14px;
+    background-color: $lighter-purple-2;
+  }
+
+  &__HeaderLeftSection {
+    display: flex;
+    align-items: center;
+  }
+
+  &__HeaderTitle {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  &__HeaderIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-purple;
+    padding: 12px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  &__ToggleButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $gray-purple;
+    padding: 12px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border: 0;
+  }
+}
