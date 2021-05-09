@@ -86,18 +86,6 @@ const App = (): JSX.Element => {
     });
   };
 
-  const removeNewFlag = (index: number) => {
-    setTimeout(() => {
-      setHeroes(heroesState => {
-        const copyHeroes = [...heroesState];
-        copyHeroes[index].isFavorite = true;
-        copyHeroes[index].isNew = true;
-
-        return copyHeroes;
-      });
-    }, 2000);
-  };
-
   const AllSuperHeroesMemoized = useMemo(
     () => (
       <AllSuperHeroes

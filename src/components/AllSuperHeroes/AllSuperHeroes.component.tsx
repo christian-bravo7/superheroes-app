@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import SuperHeroesBoard from '@/components/SuperHeroesBoard/SuperHeroesBoard.component';
 import Search from '@/components/Search/Search.component';
