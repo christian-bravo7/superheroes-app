@@ -19,7 +19,7 @@ const SuperHeroCard = ({
   name,
   realName,
   image,
-  power,
+  averagePower,
   isFavorite,
   onAddToFavorites,
   onRemoveFromFavorites,
@@ -64,7 +64,7 @@ const SuperHeroCard = ({
             />
             <span>
               <span className={classes.SuperHeroCard__PowerPoints}>
-                {index}
+                {averagePower}
               </span>{' '}
               /10
             </span>

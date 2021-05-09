@@ -16,7 +16,7 @@ export interface SuperHero {
   image: string;
   name: string;
   realName: string;
-  power: number;
+  averagePower: number;
   isFavorite: boolean;
 }
 
@@ -25,13 +25,27 @@ const formatSuperHeroData = (data: any): Omit<SuperHero, 'index'> => {
   const name = data.name;
 
   const realName = data.biography.fullName || '-';
-  const power = 10;
+
+  const {
+    intelligence,
+    strength,
+    speed,
+    durability,
+    power,
+    combat,
+  } = data.powerstats;
+
+  const averagePower = (
+    (intelligence + strength + speed + durability + power + combat) /
+    6 /
+    10
+  ).toFixed(0);
 
   return {
     image,
     name,
     realName,
-    power,
+    averagePower: Number(averagePower),
     isFavorite: false,
   };
 };

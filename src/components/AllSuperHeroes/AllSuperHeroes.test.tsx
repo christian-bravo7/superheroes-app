@@ -9,7 +9,7 @@ const superHeroes = [
     image: 'agent-zero.png',
     isFavorite: false,
     name: 'Agent Zero',
-    power: 10,
+    averagePower: 10,
     realName: 'Christoph Nord',
   },
 ];
