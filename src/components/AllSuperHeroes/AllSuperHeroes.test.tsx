@@ -20,6 +20,7 @@ describe('AllSuperHeroes component', () => {
 
     render(
       <AllSuperHeroes
+        isLoading={false}
         heroes={superHeroes}
         onAddToFavorites={addToFavoritesHandler}
       />,

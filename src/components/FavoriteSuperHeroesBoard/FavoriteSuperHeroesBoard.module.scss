@@ -1,4 +1,4 @@
-.SuperHeroesBoard {
+.FavoriteSuperHeroesBoard {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -10,17 +10,5 @@
     justify-content: center;
     gap: 16px;
     max-width: 1300px;
-  }
-
-  &__Container {
-    height: 80vh;
-  }
-
-  &__Row {
-    display: grid;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 16px;
-    grid-template-columns: repeat(auto-fill, minmax(285px, 285px));
   }
 }

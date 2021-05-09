@@ -81,6 +81,7 @@ const App = (): JSX.Element => {
     setHeroes(heroesState => {
       const copyHeroes = [...heroesState];
       copyHeroes[index].isFavorite = false;
+      copyHeroes[index].isNew = false;
 
       return copyHeroes;
     });

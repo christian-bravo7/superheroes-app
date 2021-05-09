@@ -1,15 +1,17 @@
 import { Dictionary } from '@/types';
 import axios from 'axios';
 
-const getAllSuperHeroes = async (): Promise<Array<SuperHero>> => {
+const getAllSuperHeroes = async (): Promise<SuperHero[]> => {
   const { data } = await axios.get('');
 
-  const superHeroes = data.map((data: Dictionary, index: number) => ({
-    ...formatSuperHeroData(data),
-    index,
-  }));
+  const superHeroes: SuperHero[] = data.map(
+    (data: Dictionary, index: number) => ({
+      ...formatSuperHeroData(data),
+      index,
+    }),
+  );
 
-  return superHeroes;
+  return superHeroes.slice(0, 10);
 };
 
 export interface SuperHero {

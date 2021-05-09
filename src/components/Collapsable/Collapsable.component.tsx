@@ -9,6 +9,7 @@ interface propTypes {
   headerIcon: string;
   title: string;
   isOpen?: boolean;
+  onChange?: (state: boolean) => void;
 }
 
 const Collapsable = ({
@@ -16,11 +17,16 @@ const Collapsable = ({
   headerIcon,
   title,
   isOpen,
+  onChange,
 }: propTypes): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleCollapsable = () => {
     setIsActive(isActive => !isActive);
+
+    if (onChange) {
+      onChange(!isActive);
+    }
   };
 
   useEffect(() => {

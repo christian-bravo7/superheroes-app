@@ -26,6 +26,6 @@ describe('FavoriteHeroes component', () => {
     );
 
     expect(screen.getByTestId('collapsable')).toBeInTheDocument();
-    expect(screen.getByTestId('super-hero-board')).toBeInTheDocument();
+    expect(screen.getByTestId('favorite-super-hero-board')).toBeInTheDocument();
   });
 });

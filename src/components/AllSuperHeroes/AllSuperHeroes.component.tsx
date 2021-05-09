@@ -24,8 +24,10 @@ const AllSuperHeroes = ({
 
   useEffect(() => {
     if (value.trim() !== '') {
-      const matchHeroes = heroes.filter(({ name }) =>
-        name.toLowerCase().startsWith(value.toLowerCase()),
+      const matchHeroes = heroes.filter(
+        ({ name, realName }) =>
+          name.toLowerCase().startsWith(value.toLowerCase()) ||
+          realName.toLowerCase().startsWith(value.toLowerCase()),
       );
       setFilteredHeroes(matchHeroes);
     } else {
@@ -46,7 +48,7 @@ const AllSuperHeroes = ({
       {isLoading ? (
         <SuperHeroesBoardLoader />
       ) : (
-        <div className={classes.AllSuperHeroes__Content}>
+        <>
           <div className={classes.AllSuperHeroes__Header}>
             <h2 className={classes.AllSuperHeroes__Title}>All Superheroes</h2>
             <Search value={value} onChange={onChangeHandler} />
@@ -55,7 +57,7 @@ const AllSuperHeroes = ({
             heroes={filteredHeroes}
             onAddToFavorites={onAddToFavorites}
           />
-        </div>
+        </>
       )}
     </section>
   );
