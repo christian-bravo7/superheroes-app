@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import SuperHeroesBoardLoader from '@/components/SuperHeroesBoardLoader/SuperHeroesBoardLoader.component';
 import SuperHeroesBoard from '@/components/SuperHeroesBoard/SuperHeroesBoard.component';
 import Search from '@/components/Search/Search.component';
 
@@ -9,11 +10,13 @@ import classes from '@/components/AllSuperHeroes/AllSuperHeroes.module.scss';
 
 interface propTypes {
   heroes: SuperHero[];
+  isLoading?: boolean;
   onAddToFavorites: (index: number) => void;
 }
 
 const AllSuperHeroes = ({
   heroes,
+  isLoading,
   onAddToFavorites,
 }: propTypes): JSX.Element => {
   const [value, setValue] = useState('');
@@ -40,16 +43,20 @@ const AllSuperHeroes = ({
 
   return (
     <section className={classes.AllSuperHeroes}>
-      <div className={classes.AllSuperHeroes__Content}>
-        <div className={classes.AllSuperHeroes__Header}>
-          <h2 className={classes.AllSuperHeroes__Title}>All Superheroes</h2>
-          <Search value={value} onChange={onChangeHandler} />
+      {isLoading ? (
+        <SuperHeroesBoardLoader />
+      ) : (
+        <div className={classes.AllSuperHeroes__Content}>
+          <div className={classes.AllSuperHeroes__Header}>
+            <h2 className={classes.AllSuperHeroes__Title}>All Superheroes</h2>
+            <Search value={value} onChange={onChangeHandler} />
+          </div>
+          <SuperHeroesBoard
+            heroes={filteredHeroes}
+            onAddToFavorites={onAddToFavorites}
+          />
         </div>
-        <SuperHeroesBoard
-          heroes={filteredHeroes}
-          onAddToFavorites={onAddToFavorites}
-        />
-      </div>
+      )}
     </section>
   );
 };

@@ -6,6 +6,5 @@ import App from '@/App';
 it('renders learn react link', () => {
   render(<App />);
 
-  expect(screen.getAllByTestId('super-hero-board')).toHaveLength(1);
-  expect(screen.getByTestId('no-favorite-heroes-added')).toBeInTheDocument();
+  expect(screen.getAllByTestId('super-heroes-loader')).toHaveLength(2);
 });

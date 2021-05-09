@@ -89,6 +89,7 @@ const App = (): JSX.Element => {
   const AllSuperHeroesMemoized = useMemo(
     () => (
       <AllSuperHeroes
+        isLoading={!heroes.length}
         heroes={nonFavoriteHeroes}
         onAddToFavorites={addToFavoritesHandler}
       />
@@ -99,6 +100,7 @@ const App = (): JSX.Element => {
   const FavoriteHeroesMemoized = useMemo(
     () => (
       <FavoriteHeroes
+        isLoading={!heroes.length}
         heroes={favoriteHeroes}
         onRemoveFromFavorites={removeFromFavoritesHandler}
       />
