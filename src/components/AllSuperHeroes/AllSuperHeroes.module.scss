@@ -1,15 +1,23 @@
 .AllSuperHeroes {
-  padding: 16px;
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+
+  &__Content {
+    padding: 16px;
+  }
 
   &__Title {
     font-weight: bold;
     color: white;
-    font-size: 32px;
+    font-size: 28px;
+    margin-left: 8px;
   }
 
   &__Header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 34px;
   }
 }

@@ -39,16 +39,18 @@ const AllSuperHeroes = ({
   };
 
   return (
-    <div className={classes.AllSuperHeroes}>
-      <div className={classes.AllSuperHeroes__Header}>
-        <h2 className={classes.AllSuperHeroes__Title}>All Superheroes</h2>
-        <Search value={value} onChange={onChangeHandler} />
+    <section className={classes.AllSuperHeroes}>
+      <div className={classes.AllSuperHeroes__Content}>
+        <div className={classes.AllSuperHeroes__Header}>
+          <h2 className={classes.AllSuperHeroes__Title}>All Superheroes</h2>
+          <Search value={value} onChange={onChangeHandler} />
+        </div>
+        <SuperHeroesBoard
+          heroes={filteredHeroes}
+          onAddToFavorites={onAddToFavorites}
+        />
       </div>
-      <SuperHeroesBoard
-        heroes={filteredHeroes}
-        onAddToFavorites={onAddToFavorites}
-      />
-    </div>
+    </section>
   );
 };
 

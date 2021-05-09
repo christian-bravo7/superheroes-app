@@ -6,6 +6,7 @@
   border: 1px solid $light-purple;
   background-color: $lighter-purple-2;
   border-radius: 14px;
+  width: 100%;
 
   &__Active {
     background-color: transparent;
@@ -24,7 +25,7 @@
 
   &__HeaderTitle {
     color: white;
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
   }
 
@@ -35,8 +36,8 @@
     background-color: $light-purple;
     padding: 12px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     margin-right: 10px;
   }
 
@@ -47,9 +48,10 @@
     background-color: $gray-purple;
     padding: 12px;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border: 0;
+    cursor: pointer;
     transform: rotate(180deg);
     transition-property: transform;
     transition-duration: 300ms;
@@ -71,5 +73,6 @@
   &__ContentActive {
     opacity: 1;
     height: auto;
+    padding: 16px;
   }
 }

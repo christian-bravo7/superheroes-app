@@ -5,14 +5,14 @@
 
   &__SearchIcon {
     position: absolute;
-    left: 4px;
+    left: 5px;
     top: 0;
     bottom: 0;
   }
 
   &__ClearButton {
     position: absolute;
-    right: 4px;
+    right: 5px;
     top: 0;
     bottom: 0;
     background-color: transparent;
@@ -25,8 +25,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__Input {
@@ -35,6 +38,6 @@
     border-radius: 50px;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
   }
 }
