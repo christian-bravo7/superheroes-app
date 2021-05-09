@@ -7,6 +7,7 @@ import { SuperHero } from '@/api/getAllSuperHeroes';
 import heartSmallImage from '@/assets/images/small-heart.svg';
 
 import classes from '@/components/FavoriteHeroes/FavoriteHeroes.module.scss';
+import NoFavoriteHeroesAdded from '../NoFavoriteHeroesAdded/NoFavoriteHeroesAdded.component';
 
 interface propTypes {
   heroes: SuperHero[];
@@ -19,10 +20,14 @@ const FavoriteHeroes = ({
   return (
     <section className={classes.FavoriteHeroes}>
       <Collapsable isOpen={true} headerIcon={heartSmallImage} title="Liked">
-        <SuperHeroesBoard
-          heroes={heroes}
-          onRemoveFromFavorites={onRemoveFromFavorites}
-        />
+        {heroes.length ? (
+          <SuperHeroesBoard
+            heroes={heroes}
+            onRemoveFromFavorites={onRemoveFromFavorites}
+          />
+        ) : (
+          <NoFavoriteHeroesAdded />
+        )}
       </Collapsable>
     </section>
   );

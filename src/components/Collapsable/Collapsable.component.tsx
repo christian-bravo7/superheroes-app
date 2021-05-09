@@ -5,7 +5,7 @@ import arrowImage from '@/assets/images/arrow-up.svg';
 import classes from '@/components/Collapsable/Collapsable.module.scss';
 
 interface propTypes {
-  children: JSX.Element | string;
+  children: JSX.Element | string | JSX.Element[];
   headerIcon: string;
   title: string;
   isOpen?: boolean;
