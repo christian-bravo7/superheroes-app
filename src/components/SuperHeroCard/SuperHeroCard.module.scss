@@ -4,22 +4,22 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   margin: 10px;
-  width: 325px;
-  height: 200px;
+  width: 285px;
+  height: 174px;
 
   &__Content {
     height: 100%;
-    padding: 20px;
+    padding: 16px 16px 18px 16px;
     display: flex;
-    backdrop-filter: brightness(0.35) blur(20px);
+    backdrop-filter: brightness(0.35) blur(27px);
   }
 
   &__Picture {
-    width: 120px;
-    height: 100%;
+    width: 105px;
+    height: 140px;
     border-radius: 10px;
     object-fit: cover;
   }
@@ -37,8 +37,8 @@
   }
 
   &__FavoriteButton {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     background-color: $light-purple;
     border-radius: 50%;
     border: 0;
@@ -46,20 +46,27 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: -6px;
-    right: -6px;
+    bottom: -4px;
+    right: -7px;
     cursor: pointer;
+
+    svg {
+      width: 14px;
+    }
   }
 
   &__Name {
     font-weight: bold;
     color: white;
     font-size: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+    line-height: 28px;
   }
 
   &__RealName {
     margin-bottom: 6px;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   &__PowerImage {
@@ -67,6 +74,7 @@
   }
 
   &__PowerInformation {
+    font-size: 12px;
     display: flex;
     align-items: center;
   }

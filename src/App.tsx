@@ -66,6 +66,7 @@ const App = (): JSX.Element => {
   };
 
   const addToFavoritesHandler = (index: number) => {
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     saveIndexInLocalStorage(index);
     setHeroes(heroesState => {
       const copyHeroes = [...heroesState];

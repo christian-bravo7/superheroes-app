@@ -13,15 +13,10 @@ const FavoriteHeroes = ({
   heroes,
   onRemoveFromFavorites,
 }: propTypes): JSX.Element => {
-  const favoriteHeroes = heroes.map(hero => ({
-    ...hero,
-    isFavorite: true,
-  })) as SuperHero[];
-
   return (
-    <Collapsable headerIcon={heartSmallImage} title="Liked">
+    <Collapsable isOpen={true} headerIcon={heartSmallImage} title="Liked">
       <SuperHeroesBoard
-        heroes={favoriteHeroes}
+        heroes={heroes}
         onRemoveFromFavorites={onRemoveFromFavorites}
       />
     </Collapsable>

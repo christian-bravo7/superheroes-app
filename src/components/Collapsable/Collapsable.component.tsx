@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import arrowImage from '@/assets/images/arrow-up.svg';
 
@@ -8,18 +8,24 @@ interface propTypes {
   children: JSX.Element | string;
   headerIcon: string;
   title: string;
+  isOpen?: boolean;
 }
 
 const Collapsable = ({
   children,
   headerIcon,
   title,
+  isOpen,
 }: propTypes): JSX.Element => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleCollapsable = () => {
     setIsActive(isActive => !isActive);
   };
+
+  useEffect(() => {
+    setIsActive(isOpen as boolean);
+  }, [isOpen]);
 
   return (
     <div
