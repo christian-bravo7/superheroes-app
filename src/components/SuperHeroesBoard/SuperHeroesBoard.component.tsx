@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useRef } from 'react';
-import { AutoSizer, List } from 'react-virtualized';
+import React from 'react';
+import { AutoSizer, List, ListRowProps } from 'react-virtualized';
 
 import SuperHeroCard from '@/components/SuperHeroCard/SuperHeroCard.component';
 import classes from '@/components/SuperHeroesBoard/SuperHeroesBoard.module.scss';
@@ -21,8 +21,8 @@ const SuperHeroesBoard = ({
   const totalItems = heroes.length;
   const rowHeight = 192;
 
-  const rowRenderer = ({ index, key, style, parent }: any) => {
-    const items: any = [];
+  const rowRenderer = ({ index, key, style, parent }: ListRowProps) => {
+    const items: JSX.Element[] = [];
 
     const { width } = parent.props;
     const itemsPerRow = Math.floor(width / 285);
@@ -33,7 +33,7 @@ const SuperHeroesBoard = ({
       const hero = heroes[i];
 
       items.push(
-        <div key={i} className={classes.SuperHeroesBoard__Item}>
+        <div key={hero.index} className={classes.SuperHeroesBoard__Item}>
           <SuperHeroCard
             {...hero}
             onAddToFavorites={onAddToFavorites}
@@ -56,7 +56,7 @@ const SuperHeroesBoard = ({
       data-testid="super-hero-board"
     >
       <AutoSizer>
-        {({ height, width }: any) => {
+        {({ height, width }) => {
           const itemsPerRow = Math.floor(width / 285);
           const rowCount = Math.ceil(totalItems / itemsPerRow);
 

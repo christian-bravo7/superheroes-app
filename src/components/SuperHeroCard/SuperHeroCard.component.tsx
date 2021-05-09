@@ -38,21 +38,23 @@ const SuperHeroCard = ({
   };
 
   useEffect(() => {
-    let timeoudId: NodeJS.Timeout;
+    let addIsNewStateId: NodeJS.Timeout;
+    let removeIsNewStateId: NodeJS.Timeout;
 
     if (isNew) {
-      setTimeout(() => {
+      addIsNewStateId = setTimeout(() => {
         setIsAdded(true);
         superHeroCardRef?.current?.scrollIntoView(false);
       }, 500);
 
-      timeoudId = setTimeout(() => {
+      removeIsNewStateId = setTimeout(() => {
         setIsAdded(false);
       }, 6000);
     }
 
     return () => {
-      clearTimeout(timeoudId);
+      clearTimeout(addIsNewStateId);
+      clearTimeout(removeIsNewStateId);
     };
   }, [isNew]);
 

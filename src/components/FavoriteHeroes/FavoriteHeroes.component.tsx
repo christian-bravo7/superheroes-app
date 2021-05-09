@@ -3,14 +3,14 @@ import React from 'react';
 import Collapsable from '@/components/Collapsable/Collapsable.component';
 import NoFavoriteHeroesAdded from '@/components/NoFavoriteHeroesAdded/NoFavoriteHeroesAdded.component';
 import SuperHeroesBoardLoader from '@/components/SuperHeroesBoardLoader/SuperHeroesBoardLoader.component';
+import FavoriteSuperHeroesBoard from '@/components/FavoriteSuperHeroesBoard/FavoriteSuperHeroesBoard';
 
 import { SuperHero } from '@/api/getAllSuperHeroes';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 import heartSmallImage from '@/assets/images/small-heart.svg';
 
 import classes from '@/components/FavoriteHeroes/FavoriteHeroes.module.scss';
-import useLocalStorage from '@/hooks/useLocalStorage';
-import FavoriteSuperHeroesBoard from '../FavoriteSuperHeroesBoard/FavoriteSuperHeroesBoard';
 
 interface propTypes {
   heroes: SuperHero[];
