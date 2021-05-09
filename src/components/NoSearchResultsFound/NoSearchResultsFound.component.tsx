@@ -2,10 +2,6 @@ import React from 'react';
 
 import classes from '@/components/NoSearchResultsFound/NoSearchResultsFound.module.scss';
 
-interface propTypes {
-  text: string;
-}
-
 const NoSearchResultsFound = (): JSX.Element => {
   return (
     <div
