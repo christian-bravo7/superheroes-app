@@ -5,7 +5,8 @@ import Search from '@/components/Search/Search.component';
 
 describe('Search component', () => {
   it('should render Search', () => {
-    render(<Search />);
+    const changeHandler = jest.fn();
+    render(<Search value="" onChange={changeHandler} />);
     expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 });

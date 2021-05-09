@@ -66,11 +66,11 @@ const App = (): JSX.Element => {
   };
 
   const addToFavoritesHandler = (index: number) => {
-    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     saveIndexInLocalStorage(index);
     setHeroes(heroesState => {
       const copyHeroes = [...heroesState];
       copyHeroes[index].isFavorite = true;
+      copyHeroes[index].isNew = true;
 
       return copyHeroes;
     });
@@ -84,6 +84,18 @@ const App = (): JSX.Element => {
 
       return copyHeroes;
     });
+  };
+
+  const removeNewFlag = (index: number) => {
+    setTimeout(() => {
+      setHeroes(heroesState => {
+        const copyHeroes = [...heroesState];
+        copyHeroes[index].isFavorite = true;
+        copyHeroes[index].isNew = true;
+
+        return copyHeroes;
+      });
+    }, 2000);
   };
 
   const AllSuperHeroesMemoized = useMemo(

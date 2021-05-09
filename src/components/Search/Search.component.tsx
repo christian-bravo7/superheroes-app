@@ -16,6 +16,8 @@ const Search = ({ value, onChange }: propTypes): JSX.Element => {
     onChange(value);
   };
 
+  const isClearButtonVisible = value.trim() !== '';
+
   const clearSearchHandler = () => {
     onChange('');
   };
@@ -32,7 +34,9 @@ const Search = ({ value, onChange }: propTypes): JSX.Element => {
       ></input>
       <button
         onClick={clearSearchHandler}
-        className={classes.Search__ClearButton}
+        className={`${classes.Search__ClearButton} ${
+          isClearButtonVisible ? classes.Search__ClearButtonVisible : ''
+        }`}
       >
         <img src={cancelImage} alt=""></img>
       </button>

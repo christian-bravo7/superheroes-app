@@ -4,6 +4,9 @@
   position: relative;
 
   &__SearchIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     left: 5px;
     top: 0;
@@ -11,6 +14,9 @@
   }
 
   &__ClearButton {
+    display: none;
+    align-items: center;
+    justify-content: center;
     position: absolute;
     right: 5px;
     top: 0;
@@ -20,12 +26,12 @@
     cursor: pointer;
   }
 
+  &__ClearButtonVisible {
+    display: flex;
+  }
+
   &__SearchIcon,
   &__ClearButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     svg {
       width: 20px;
       height: 20px;

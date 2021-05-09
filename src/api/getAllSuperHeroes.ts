@@ -13,6 +13,7 @@ const getAllSuperHeroes = async (): Promise<Array<SuperHero>> => {
 
 export interface SuperHero {
   index: number;
+  isNew?: boolean;
   image: string;
   name: string;
   realName: string;
