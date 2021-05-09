@@ -1,0 +1,40 @@
+@import '../../assets/scss/colors';
+
+.Search {
+  position: relative;
+
+  &__SearchIcon {
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+  }
+
+  &__ClearButton {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__SearchIcon,
+  &__ClearButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+
+  &__Input {
+    background-color: $lighter-purple-3;
+    padding: 8px 40px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    font-size: 16px;
+  }
+}
