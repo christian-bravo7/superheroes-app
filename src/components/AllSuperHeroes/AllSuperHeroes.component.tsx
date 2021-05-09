@@ -22,22 +22,22 @@ const AllSuperHeroes = ({
   const [value, setValue] = useState('');
   const [filteredHeroes, setFilteredHeroes] = useState<SuperHero[]>(heroes);
 
+  const getMatchResultsFor = (value: string) => {
+    return heroes.filter(
+      ({ name, realName }) =>
+        name.toLowerCase().startsWith(value.toLowerCase()) ||
+        realName.toLowerCase().startsWith(value.toLowerCase()),
+    );
+  };
+
   useEffect(() => {
     if (value.trim() !== '') {
-      const matchHeroes = heroes.filter(
-        ({ name, realName }) =>
-          name.toLowerCase().startsWith(value.toLowerCase()) ||
-          realName.toLowerCase().startsWith(value.toLowerCase()),
-      );
+      const matchHeroes = getMatchResultsFor(value);
       setFilteredHeroes(matchHeroes);
     } else {
       setFilteredHeroes(heroes);
     }
-  }, [value]);
-
-  useEffect(() => {
-    setFilteredHeroes(heroes);
-  }, [heroes]);
+  }, [value, heroes]);
 
   const onChangeHandler = (value: string) => {
     setValue(value);

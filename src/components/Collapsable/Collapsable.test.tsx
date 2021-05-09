@@ -48,4 +48,23 @@ describe('Collapsable component', () => {
       'Collapsable__ContentActive',
     );
   });
+
+  it('should class onChange method when button is clicked', async () => {
+    const changeHandler = jest.fn();
+
+    render(
+      <Collapsable
+        onChange={changeHandler}
+        isOpen={true}
+        headerIcon="icon"
+        title="Heroes"
+      >
+        Hello heroes
+      </Collapsable>,
+    );
+
+    await userEvent.click(screen.getByTestId('toggle-button'));
+
+    expect(changeHandler).toHaveBeenCalledWith(false);
+  });
 });

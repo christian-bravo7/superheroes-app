@@ -31,6 +31,7 @@ const Search = ({ value, onChange }: propTypes): JSX.Element => {
         className={classes.Search__Input}
         value={value}
         onChange={changeHandler}
+        placeholder="Search"
       ></input>
       <button
         onClick={clearSearchHandler}

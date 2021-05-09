@@ -3,9 +3,11 @@ import React from 'react';
 import { AutoSizer, List, ListRowProps } from 'react-virtualized';
 
 import SuperHeroCard from '@/components/SuperHeroCard/SuperHeroCard.component';
-import classes from '@/components/SuperHeroesBoard/SuperHeroesBoard.module.scss';
+import NoSearchResultsFound from '@/components/NoSearchResultsFound/NoSearchResultsFound.component';
 
 import { SuperHero } from '@/api/getAllSuperHeroes';
+
+import classes from '@/components/SuperHeroesBoard/SuperHeroesBoard.module.scss';
 
 interface propTypes {
   heroes: SuperHero[];
@@ -55,23 +57,28 @@ const SuperHeroesBoard = ({
       className={classes.SuperHeroesBoard__Container}
       data-testid="super-hero-board"
     >
-      <AutoSizer>
-        {({ height, width }) => {
-          const itemsPerRow = Math.floor(width / 285);
-          const rowCount = Math.ceil(totalItems / itemsPerRow);
+      {' '}
+      {heroes.length ? (
+        <AutoSizer>
+          {({ height, width }) => {
+            const itemsPerRow = Math.floor(width / 285);
+            const rowCount = Math.ceil(totalItems / itemsPerRow);
 
-          return (
-            <List
-              className="List"
-              width={width}
-              height={height}
-              rowCount={rowCount}
-              rowHeight={rowHeight}
-              rowRenderer={rowRenderer}
-            />
-          );
-        }}
-      </AutoSizer>
+            return (
+              <List
+                className="List"
+                width={width}
+                height={height}
+                rowCount={rowCount}
+                rowHeight={rowHeight}
+                rowRenderer={rowRenderer}
+              />
+            );
+          }}
+        </AutoSizer>
+      ) : (
+        <NoSearchResultsFound />
+      )}
     </div>
   );
 };

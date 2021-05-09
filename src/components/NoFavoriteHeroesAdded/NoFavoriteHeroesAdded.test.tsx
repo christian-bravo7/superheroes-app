@@ -9,4 +9,10 @@ describe('NoFavoriteHeroesAdded component', () => {
 
     expect(screen.getByTestId('no-favorite-heroes-added')).toBeInTheDocument();
   });
+
+  it('should render an image', () => {
+    render(<NoFavoriteHeroesAdded />);
+
+    expect(screen.getByRole('img')).toBeInTheDocument();
+  });
 });

@@ -11,6 +11,7 @@ const superHeroes = [
     name: 'Agent Zero',
     power: 10,
     realName: 'Christoph Nord',
+    averagePower: 2,
   },
 ];
 
@@ -28,5 +29,20 @@ describe('SuperHeroesBoard component', () => {
     );
 
     expect(screen.getByTestId('super-hero-board')).toBeInTheDocument();
+  });
+
+  it('should render no search results component', () => {
+    const addtoFavoritesHandler = jest.fn();
+    const removeFromFavoritesHandler = jest.fn();
+
+    render(
+      <SuperHeroesBoard
+        heroes={[]}
+        onAddToFavorites={addtoFavoritesHandler}
+        onRemoveFromFavorites={removeFromFavoritesHandler}
+      />,
+    );
+
+    expect(screen.getByTestId('no-search-results-found')).toBeInTheDocument();
   });
 });

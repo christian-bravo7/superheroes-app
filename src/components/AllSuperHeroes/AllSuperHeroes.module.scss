@@ -17,3 +17,18 @@
     margin-bottom: 34px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .AllSuperHeroes {
+    &__Title {
+      margin-bottom: 20px;
+      margin-left: 0px;
+    }
+
+    &__Header {
+      flex-direction: column;
+      align-items: initial;
+      padding: 16px;
+    }
+  }
+}
