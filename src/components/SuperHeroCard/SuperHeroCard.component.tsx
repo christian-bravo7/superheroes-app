@@ -63,45 +63,47 @@ const SuperHeroCard = ({
       className={classes.SuperHeroCard}
     >
       <div
-        className={`${classes.SuperHeroCard__Background} ${
-          isAdded ? classes.SuperHeroCard__BackgroundIsAdded : ''
+        className={`${classes.SuperHeroCard__Wrapper} ${
+          isAdded ? classes.SuperHeroCard__WrapperIsAdded : ''
         }`}
       >
-        <div
-          className={classes.SuperHeroCard__Wrapper}
-          style={{
-            backgroundImage: `url(${image})`,
-          }}
-        >
-          <div className={classes.SuperHeroCard__Content}>
-            <div className={classes.SuperHeroCard__PictureWrapper}>
-              <img className={classes.SuperHeroCard__Picture} src={image}></img>
-              <button
-                data-testid="favorite-button"
-                className={classes.SuperHeroCard__FavoriteButton}
-                onClick={favoriteButtonHandler}
-              >
-                <img src={isFavorite ? heartFilledImage : heartImage}></img>
-              </button>
-            </div>
-            <div className={classes.SuperHeroCard__Information}>
-              <span className={classes.SuperHeroCard__Name}>{name}</span>
-              <span className={classes.SuperHeroCard__RealName}>
-                Real Name: {realName}
+        <img
+          className={classes.SuperHeroCard__BackgroundImage}
+          src={image}
+          loading="lazy"
+        ></img>
+        <div className={classes.SuperHeroCard__Content}>
+          <div className={classes.SuperHeroCard__PictureWrapper}>
+            <img
+              className={classes.SuperHeroCard__Picture}
+              src={image}
+              loading="lazy"
+            ></img>
+            <button
+              data-testid="favorite-button"
+              className={classes.SuperHeroCard__FavoriteButton}
+              onClick={favoriteButtonHandler}
+            >
+              <img src={isFavorite ? heartFilledImage : heartImage}></img>
+            </button>
+          </div>
+          <div className={classes.SuperHeroCard__Information}>
+            <span className={classes.SuperHeroCard__Name}>{name}</span>
+            <span className={classes.SuperHeroCard__RealName}>
+              Real Name: {realName}
+            </span>
+            <div className={classes.SuperHeroCard__PowerInformation}>
+              <img
+                className={classes.SuperHeroCard__PowerImage}
+                src={powerImage}
+                alt=""
+              />
+              <span>
+                <span className={classes.SuperHeroCard__PowerPoints}>
+                  {averagePower}
+                </span>{' '}
+                /10
               </span>
-              <div className={classes.SuperHeroCard__PowerInformation}>
-                <img
-                  className={classes.SuperHeroCard__PowerImage}
-                  src={powerImage}
-                  alt=""
-                />
-                <span>
-                  <span className={classes.SuperHeroCard__PowerPoints}>
-                    {averagePower}
-                  </span>{' '}
-                  /10
-                </span>
-              </div>
             </div>
           </div>
         </div>
