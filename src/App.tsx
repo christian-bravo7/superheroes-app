@@ -22,6 +22,7 @@ const setHeroesAsFavoritesWithIndices = (
 };
 
 const App = (): JSX.Element => {
+  const [isLoading, setIsLoading] = useState(true);
   const [heroes, setHeroes] = useState<SuperHero[]>([]);
   const [favoriteHeroes, setFavoriteHeroes] = useState<SuperHero[]>([]);
   const [nonFavoriteHeroes, setNonFavoriteHeroes] = useState<SuperHero[]>([]);
@@ -33,12 +34,17 @@ const App = (): JSX.Element => {
   useEffect(() => {
     const fetchSuperHeroes = async () => {
       const heroes = await getAllSuperHeroes();
+      const favoriteHeroes = indicesOfFavoriteHeroes.map(
+        (index: number) => heroes[index],
+      );
       const transformedHeroes = setHeroesAsFavoritesWithIndices(
         heroes,
         indicesOfFavoriteHeroes,
       );
 
+      setFavoriteHeroes(favoriteHeroes);
       setHeroes(transformedHeroes);
+      setIsLoading(false);
     };
 
     fetchSuperHeroes();
@@ -48,8 +54,14 @@ const App = (): JSX.Element => {
     setNonFavoriteHeroes(
       heroes.filter(({ isFavorite }: SuperHero) => !isFavorite),
     );
-    setFavoriteHeroes(heroes.filter(({ isFavorite }: SuperHero) => isFavorite));
   }, [heroes]);
+
+  useEffect(() => {
+    const favoriteHeroes = indicesOfFavoriteHeroes.map(
+      (index: number) => heroes[index],
+    );
+    setFavoriteHeroes(favoriteHeroes);
+  }, [indicesOfFavoriteHeroes]);
 
   const saveIndexInLocalStorage = (index: number) => {
     const copyIndices = [...indicesOfFavoriteHeroes];
@@ -90,23 +102,23 @@ const App = (): JSX.Element => {
   const AllSuperHeroesMemoized = useMemo(
     () => (
       <AllSuperHeroes
-        isLoading={!heroes.length}
+        isLoading={isLoading}
         heroes={nonFavoriteHeroes}
         onAddToFavorites={addToFavoritesHandler}
       />
     ),
-    [nonFavoriteHeroes],
+    [nonFavoriteHeroes, isLoading],
   );
 
   const FavoriteHeroesMemoized = useMemo(
     () => (
       <FavoriteHeroes
-        isLoading={!heroes.length}
+        isLoading={isLoading}
         heroes={favoriteHeroes}
         onRemoveFromFavorites={removeFromFavoritesHandler}
       />
     ),
-    [favoriteHeroes],
+    [favoriteHeroes, isLoading],
   );
 
   const HeaderMemoized = useMemo(() => <Header />, []);
