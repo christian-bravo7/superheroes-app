@@ -7,20 +7,17 @@ import { SuperHero } from '@/api/getAllSuperHeroes';
 
 interface propTypes {
   heroes: Array<SuperHero | null>;
-  onAddToFavorites: (index: number) => void;
   onRemoveFromFavorites: (index: number) => void;
 }
 const FavoriteHeroes = ({
   heroes,
   onRemoveFromFavorites,
-  onAddToFavorites,
 }: propTypes): JSX.Element => {
   return (
     <Collapsable headerIcon={heartSmallImage} title="Liked">
       <SuperHeroesBoard
         heroes={heroes}
         onRemoveFromFavorites={onRemoveFromFavorites}
-        onAddToFavorites={onAddToFavorites}
       />
     </Collapsable>
   );

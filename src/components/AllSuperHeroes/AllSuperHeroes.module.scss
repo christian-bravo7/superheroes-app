@@ -1,0 +1,13 @@
+.AllSuperHeroes {
+  &__Title {
+    font-weight: bold;
+    color: white;
+    font-size: 32px;
+  }
+
+  &__Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

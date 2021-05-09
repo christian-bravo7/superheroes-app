@@ -8,6 +8,7 @@ import getAllSuperHeroes, { SuperHero } from '@/api/getAllSuperHeroes';
 
 import classes from '@/App.module.scss';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import AllSuperHeroes from './components/AllSuperHeroes/AllSuperHeroes.component';
 
 const getElementsWithIndices: <T>(
   items: Array<T>,
@@ -106,11 +107,9 @@ const App = (): JSX.Element => {
       <FavoriteHeroes
         heroes={favoriteHeroes}
         onRemoveFromFavorites={removeFromFavoritesHandler}
-        onAddToFavorites={addToFavoritesHandler}
       />
-      <SuperHeroesBoard
+      <AllSuperHeroes
         heroes={heroes}
-        onRemoveFromFavorites={removeFromFavoritesHandler}
         onAddToFavorites={addToFavoritesHandler}
       />
       Hello world

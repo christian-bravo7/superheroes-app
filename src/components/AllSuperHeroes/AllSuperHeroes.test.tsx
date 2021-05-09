@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import FavoriteHeroes from '@/components/FavoriteHeroes/FavoriteHeroes.component';
+import AllSuperHeroes from '@/components/AllSuperHeroes/AllSuperHeroes.component';
 
 const superHeroes = [
   {
@@ -14,18 +14,18 @@ const superHeroes = [
   },
 ];
 
-describe('FavoriteHeroes component', () => {
+describe('AllSuperHeroes component', () => {
   it('should render in document', () => {
-    const removeFromFavoritesHandler = jest.fn();
+    const addToFavoritesHandler = jest.fn();
 
     render(
-      <FavoriteHeroes
+      <AllSuperHeroes
         heroes={superHeroes}
-        onRemoveFromFavorites={removeFromFavoritesHandler}
+        onAddToFavorites={addToFavoritesHandler}
       />,
     );
 
-    expect(screen.getByTestId('collapsable')).toBeInTheDocument();
+    expect(screen.getByTestId('search')).toBeInTheDocument();
     expect(screen.getByTestId('super-hero-board')).toBeInTheDocument();
   });
 });

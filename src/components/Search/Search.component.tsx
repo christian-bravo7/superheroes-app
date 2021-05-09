@@ -5,7 +5,7 @@ import cancelImage from '@/assets/images/cancel.svg';
 
 const Search = (): JSX.Element => {
   return (
-    <div>
+    <div data-testid="search">
       <div>
         <img src={searchImage} alt=""></img>
       </div>
