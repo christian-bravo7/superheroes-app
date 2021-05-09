@@ -5,7 +5,10 @@ const getAllSuperHeroes = async (): Promise<Array<SuperHero>> => {
 
   console.log(data);
 
-  const superHeroes = data.map((data: any) => formatSuperHeroData(data));
+  const superHeroes = data.map((data: any, index: number) => ({
+    ...formatSuperHeroData(data),
+    index,
+  }));
 
   console.log(superHeroes);
 
@@ -13,6 +16,7 @@ const getAllSuperHeroes = async (): Promise<Array<SuperHero>> => {
 };
 
 export interface SuperHero {
+  index: number;
   image: string;
   name: string;
   realName: string;
@@ -20,7 +24,7 @@ export interface SuperHero {
   isFavorite: boolean;
 }
 
-const formatSuperHeroData = (data: any): SuperHero => {
+const formatSuperHeroData = (data: any): Omit<SuperHero, 'index'> => {
   const image = data.images.md;
   const name = data.name;
 

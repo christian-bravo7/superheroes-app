@@ -64,7 +64,7 @@ const SuperHeroCard = ({
             />
             <span>
               <span className={classes.SuperHeroCard__PowerPoints}>
-                {power}
+                {index}
               </span>{' '}
               /10
             </span>

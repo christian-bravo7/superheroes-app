@@ -6,7 +6,5 @@ import App from '@/App';
 it('renders learn react link', () => {
   render(<App />);
 
-  const helloWorldText = screen.getByText(/Hello world/i);
-
-  expect(helloWorldText).toBeInTheDocument();
+  expect(screen.getAllByTestId('super-hero-board')).toHaveLength(2);
 });

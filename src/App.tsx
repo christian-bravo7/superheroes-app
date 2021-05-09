@@ -1,118 +1,101 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import Header from '@/components/Header/Header.component';
-import SuperHeroesBoard from '@/components/SuperHeroesBoard/SuperHeroesBoard.component';
 import FavoriteHeroes from '@/components/FavoriteHeroes/FavoriteHeroes.component';
+import AllSuperHeroes from '@/components/AllSuperHeroes/AllSuperHeroes.component';
 
 import getAllSuperHeroes, { SuperHero } from '@/api/getAllSuperHeroes';
 
-import classes from '@/App.module.scss';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import AllSuperHeroes from './components/AllSuperHeroes/AllSuperHeroes.component';
 
-const getElementsWithIndices: <T>(
-  items: Array<T>,
-  indices: Array<number>,
-) => Array<T> = (items, indices) => {
-  const newElements = items.filter((_, index) => indices.includes(index));
+import classes from '@/App.module.scss';
 
-  return newElements;
-};
-
-const removeElementsWithIndices: <T>(
-  items: Array<T | null>,
-  indices: Array<number>,
-) => Array<T | null> = (items, indices) => {
-  const newArray = [...items];
-
+const setHeroesAsFavoritesWithIndices = (
+  heroes: SuperHero[],
+  indices: number[],
+) => {
+  const heroesCopy = [...heroes];
   for (const index of indices) {
-    newArray.splice(index, 1, null);
+    heroesCopy[index].isFavorite = true;
   }
-
-  return newArray;
+  return heroesCopy;
 };
 
 const App = (): JSX.Element => {
-  const [heroes, setHeroes] = useState<Array<SuperHero | null>>([]);
-  const [favoriteHeroes, setFavoriteHeroes] = useState<Array<SuperHero | null>>(
-    [],
-  );
-  const [favoriteHeroesStored, setFavoriteHeroesStored] = useLocalStorage(
-    'favoriteHeroesStored',
-    [],
-  );
+  const [heroes, setHeroes] = useState<SuperHero[]>([]);
+  const [favoriteHeroes, setFavoriteHeroes] = useState<SuperHero[]>([]);
+  const [nonFavoriteHeroes, setNonFavoriteHeroes] = useState<SuperHero[]>([]);
+  const [
+    favoriteHeroesIndicesStored,
+    setFavoriteHeroesIndicesStored,
+  ] = useLocalStorage('favoriteHeroesIndicesStored', []);
 
   useEffect(() => {
     const fetchSuperHeroes = async () => {
       const heroes = await getAllSuperHeroes();
-
-      const nonFavoriteHeroes = removeElementsWithIndices(
+      const transformedHeroes = setHeroesAsFavoritesWithIndices(
         heroes,
-        favoriteHeroesStored,
-      );
-      const favoriteHeroes = getElementsWithIndices(
-        heroes,
-        favoriteHeroesStored,
+        favoriteHeroesIndicesStored,
       );
 
-      setHeroes(nonFavoriteHeroes);
-      setFavoriteHeroes(favoriteHeroes);
+      setHeroes(transformedHeroes);
     };
 
     fetchSuperHeroes();
   }, []);
 
-  const saveHeroeToLocalStorage = (index: number) => {
-    const copyIndices = [...favoriteHeroesStored];
-    copyIndices.push(index);
-    setFavoriteHeroesStored(copyIndices);
+  useEffect(() => {
+    setNonFavoriteHeroes(
+      heroes.filter(({ isFavorite }: SuperHero) => !isFavorite),
+    );
+    setFavoriteHeroes(heroes.filter(({ isFavorite }: SuperHero) => isFavorite));
+  }, [heroes]);
+
+  const addToFavoritesHandler = (index: number) => {
+    setHeroes(heroesState => {
+      const copyHeroes = [...heroesState];
+      copyHeroes[index].isFavorite = true;
+
+      return copyHeroes;
+    });
   };
 
   const removeFromFavoritesHandler = (index: number) => {
     setHeroes(heroesState => {
       const copyHeroes = [...heroesState];
-      copyHeroes.push(favoriteHeroes[index] as SuperHero);
-      return copyHeroes;
-    });
-
-    setFavoriteHeroes(heroesState => {
-      const copyHeroes = [...heroesState];
-      copyHeroes.splice(index, 1, null);
+      copyHeroes[index].isFavorite = false;
 
       return copyHeroes;
     });
-
-    saveHeroeToLocalStorage(index);
   };
 
-  const addToFavoritesHandler = (index: number) => {
-    setFavoriteHeroes(heroesState => {
-      const copyHeroes = [...heroesState];
-      copyHeroes.push(heroes[index] as SuperHero);
-      return copyHeroes;
-    });
+  const AllSuperHeroesMemoized = useMemo(
+    () => (
+      <AllSuperHeroes
+        heroes={nonFavoriteHeroes}
+        onAddToFavorites={addToFavoritesHandler}
+      />
+    ),
+    [nonFavoriteHeroes],
+  );
 
-    setHeroes(heroesState => {
-      const copyHeroes = [...heroesState];
-      copyHeroes.splice(index, 1, null);
-      return copyHeroes;
-    });
-
-    saveHeroeToLocalStorage(index);
-  };
-
-  return (
-    <main className={classes.app}>
-      <Header />
+  const FavoriteHeroesMemoized = useMemo(
+    () => (
       <FavoriteHeroes
         heroes={favoriteHeroes}
         onRemoveFromFavorites={removeFromFavoritesHandler}
       />
-      <AllSuperHeroes
-        heroes={heroes}
-        onAddToFavorites={addToFavoritesHandler}
-      />
-      Hello world
+    ),
+    [favoriteHeroes],
+  );
+
+  const HeaderMemoized = useMemo(() => <Header />, []);
+
+  return (
+    <main className={classes.app}>
+      {HeaderMemoized}
+      {FavoriteHeroesMemoized}
+      {AllSuperHeroesMemoized}
     </main>
   );
 };

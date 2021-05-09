@@ -12,9 +12,6 @@ const useLocalStorage = (
 
   const setValue = (value: any): void => {
     setStoredValue(value);
-
-    console.log(value);
-    console.log(JSON.stringify(value));
     window.localStorage.setItem(key, JSON.stringify(value));
   };
 

@@ -8,7 +8,7 @@ import classes from '@/components/SuperHeroesBoard/SuperHeroesBoard.module.scss'
 import { SuperHero } from '@/api/getAllSuperHeroes';
 
 interface propTypes {
-  heroes: Array<SuperHero | null>;
+  heroes: SuperHero[];
   onAddToFavorites?: (index: number) => void;
   onRemoveFromFavorites?: (index: number) => void;
 }
@@ -21,17 +21,14 @@ const SuperHeroesBoard = ({
   return (
     <div data-testid="super-hero-board" className={classes.SuperHeroesBoard}>
       <div className={classes.SuperHeroesBoard__Content}>
-        {heroes.map((hero, index) =>
-          hero ? (
-            <SuperHeroCard
-              {...hero}
-              index={index}
-              key={index}
-              onAddToFavorites={onAddToFavorites}
-              onRemoveFromFavorites={onRemoveFromFavorites}
-            />
-          ) : null,
-        )}
+        {heroes.map(hero => (
+          <SuperHeroCard
+            {...hero}
+            key={hero.index}
+            onAddToFavorites={onAddToFavorites}
+            onRemoveFromFavorites={onRemoveFromFavorites}
+          />
+        ))}
       </div>
     </div>
   );

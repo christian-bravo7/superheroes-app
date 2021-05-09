@@ -6,17 +6,22 @@ import heartSmallImage from '@/assets/images/small-heart.svg';
 import { SuperHero } from '@/api/getAllSuperHeroes';
 
 interface propTypes {
-  heroes: Array<SuperHero | null>;
+  heroes: SuperHero[];
   onRemoveFromFavorites: (index: number) => void;
 }
 const FavoriteHeroes = ({
   heroes,
   onRemoveFromFavorites,
 }: propTypes): JSX.Element => {
+  const favoriteHeroes = heroes.map(hero => ({
+    ...hero,
+    isFavorite: true,
+  })) as SuperHero[];
+
   return (
     <Collapsable headerIcon={heartSmallImage} title="Liked">
       <SuperHeroesBoard
-        heroes={heroes}
+        heroes={favoriteHeroes}
         onRemoveFromFavorites={onRemoveFromFavorites}
       />
     </Collapsable>

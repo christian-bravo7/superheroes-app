@@ -8,7 +8,7 @@ import { SuperHero } from '@/api/getAllSuperHeroes';
 import classes from '@/components/AllSuperHeroes/AllSuperHeroes.module.scss';
 
 interface propTypes {
-  heroes: Array<SuperHero | null>;
+  heroes: SuperHero[];
   onAddToFavorites: (index: number) => void;
 }
 
