@@ -11,7 +11,7 @@ const getAllSuperHeroes = async (): Promise<SuperHero[]> => {
     }),
   );
 
-  return superHeroes.slice(0, 10);
+  return superHeroes;
 };
 
 export interface SuperHero {
