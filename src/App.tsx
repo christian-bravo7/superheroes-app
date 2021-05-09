@@ -25,17 +25,17 @@ const App = (): JSX.Element => {
   const [heroes, setHeroes] = useState<SuperHero[]>([]);
   const [favoriteHeroes, setFavoriteHeroes] = useState<SuperHero[]>([]);
   const [nonFavoriteHeroes, setNonFavoriteHeroes] = useState<SuperHero[]>([]);
-  const [
-    favoriteHeroesIndicesStored,
-    setFavoriteHeroesIndicesStored,
-  ] = useLocalStorage('favoriteHeroesIndicesStored', []);
+  const [indicesOfFavoriteHeroes, setIndicesOfFavoriteHeroes] = useLocalStorage(
+    'favorite-heroes',
+    [],
+  );
 
   useEffect(() => {
     const fetchSuperHeroes = async () => {
       const heroes = await getAllSuperHeroes();
       const transformedHeroes = setHeroesAsFavoritesWithIndices(
         heroes,
-        favoriteHeroesIndicesStored,
+        indicesOfFavoriteHeroes,
       );
 
       setHeroes(transformedHeroes);
@@ -51,7 +51,22 @@ const App = (): JSX.Element => {
     setFavoriteHeroes(heroes.filter(({ isFavorite }: SuperHero) => isFavorite));
   }, [heroes]);
 
+  const saveIndexInLocalStorage = (index: number) => {
+    const copyIndices = [...indicesOfFavoriteHeroes];
+    copyIndices.push(index);
+    setIndicesOfFavoriteHeroes(copyIndices);
+  };
+
+  const deleteIndexInLocalStorage = (index: number) => {
+    const copyIndices = [...indicesOfFavoriteHeroes];
+    const indexToRemove = copyIndices.indexOf(index);
+    copyIndices.splice(indexToRemove, 1);
+
+    setIndicesOfFavoriteHeroes(copyIndices);
+  };
+
   const addToFavoritesHandler = (index: number) => {
+    saveIndexInLocalStorage(index);
     setHeroes(heroesState => {
       const copyHeroes = [...heroesState];
       copyHeroes[index].isFavorite = true;
@@ -61,6 +76,7 @@ const App = (): JSX.Element => {
   };
 
   const removeFromFavoritesHandler = (index: number) => {
+    deleteIndexInLocalStorage(index);
     setHeroes(heroesState => {
       const copyHeroes = [...heroesState];
       copyHeroes[index].isFavorite = false;

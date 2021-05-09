@@ -3,14 +3,10 @@ import axios from 'axios';
 const getAllSuperHeroes = async (): Promise<Array<SuperHero>> => {
   const { data } = await axios.get('');
 
-  console.log(data);
-
   const superHeroes = data.map((data: any, index: number) => ({
     ...formatSuperHeroData(data),
     index,
   }));
-
-  console.log(superHeroes);
 
   return superHeroes;
 };
