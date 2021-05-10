@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+See live demo: https://superheroes-app.netlify.app/
+
 ## Get Started
 
 Before starting, please fill in the environment variable REACT_APP_API_URL in your .env file
