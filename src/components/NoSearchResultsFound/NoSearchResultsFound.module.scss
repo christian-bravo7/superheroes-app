@@ -1,3 +1,5 @@
+@import '../../assets/scss/colors';
+
 .NoSearchResultsFound {
   display: flex;
   flex-direction: column;
@@ -7,7 +9,7 @@
 
   &__Description {
     text-align: center;
-    color: white;
+    color: $white;
     font-size: 16px;
   }
 }

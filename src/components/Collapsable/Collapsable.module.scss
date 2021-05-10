@@ -3,8 +3,8 @@
 .Collapsable {
   display: flex;
   flex-direction: column;
-  border: 1px solid $light-purple;
-  background-color: $lighter-purple-2;
+  border: 1px solid $purple-100;
+  background-color: $purple-400;
   border-radius: 14px;
   width: 100%;
 
@@ -24,7 +24,7 @@
   }
 
   &__HeaderTitle {
-    color: white;
+    color: $white;
     font-size: 28px;
     font-weight: bold;
   }
@@ -33,7 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $light-purple;
+    background-color: $purple-100;
     padding: 12px;
     border-radius: 50%;
     width: 34px;
@@ -45,7 +45,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $gray-purple;
+    background-color: $purple-300;
     padding: 12px;
     border-radius: 50%;
     width: 40px;

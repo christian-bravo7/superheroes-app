@@ -1,3 +1,5 @@
+@import '../../assets/scss/colors';
+
 .NoFavoriteHeroesAdded {
   display: flex;
   flex-direction: column;
@@ -13,7 +15,7 @@
 
   &__Description {
     text-align: center;
-    color: white;
+    color: $white;
     font-size: 16px;
   }
 }

@@ -39,15 +39,15 @@
   }
 
   &__Input {
-    background-color: $lighter-purple-3;
+    background-color: $purple-500;
     padding: 8px 40px;
     border-radius: 50px;
     border: none;
-    color: white;
+    color: $white;
     font-size: 15px;
 
     &::placeholder {
-      color: white;
+      color: $white;
     }
   }
 }

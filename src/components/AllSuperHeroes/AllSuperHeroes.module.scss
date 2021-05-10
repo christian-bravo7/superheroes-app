@@ -1,3 +1,5 @@
+@import '../../assets/scss/colors';
+
 .AllSuperHeroes {
   width: 100%;
   max-width: 1220px;
@@ -5,7 +7,7 @@
 
   &__Title {
     font-weight: bold;
-    color: white;
+    color: $white;
     font-size: 28px;
     margin-left: 8px;
   }
